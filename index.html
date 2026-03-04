@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>João Paulo | Genetics & Dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "field-beige": "#ECE7D1",
+              "deep-earth": "#492C1D",
+              "moss-green": "#667761",
+              "leaf-soft": "#8E977D",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400&family=Inter:wght@400;600&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Crimson Pro", serif;
+      }
+      .code-font {
+        font-family: "Fira Code", monospace;
+      }
+
+      /* Ajuste para âncoras não ficarem atrás do header fixo */
+      section {
+        scroll-margin-top: 100px;
+      }
+
+      /* Efeito de Fade In */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.8s ease-out,
+          transform 0.8s ease-out;
+      }
+      .fade-in.appear {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsividade da Timeline */
+      @media (max-width: 768px) {
+        #timeline-container .flex-row-reverse {
+          flex-direction: row;
+        }
+        #timeline-container > div {
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          padding-left: 40px;
+        }
+        .absolute.left-1/2 {
+          left: 20px;
+          transform: none;
+        }
+        #timeline-container div.w-5/12 {
+          width: 100%;
+          text-align: left !important;
+          margin-bottom: 1rem;
+        }
+        #timeline-container .z-20 {
+          position: absolute;
+          left: -14px;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-field-beige text-deep-earth flex flex-col min-h-screen">
+    <header
+      class="w-full bg-field-beige/90 backdrop-blur-sm border-b border-leaf-soft/20 sticky top-0 z-50"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="text-2xl font-bold tracking-tighter">
+          <span class="text-moss-green font-mono uppercase text-sm mr-2"
+            >[Bio/Gen/Dev]</span
+          >JPGTEIXEIRA
+        </div>
+        <nav>
+          <ul
+            class="flex flex-wrap justify-center gap-2 md:gap-8 text-[12px] md:text-xs font-bold uppercase tracking-widest text-moss-green"
+          >
+            <li>
+              <a href="#home" class="hover:text-deep-earth transition">Home</a>
+            </li>
+            <li>
+              <a
+                href="#curriculum"
+                class="hover:text-deep-earth transition text-center leading-tight"
+                >About me:<br />lifetime CV</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="hover:text-deep-earth transition"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#papers" class="hover:text-deep-earth transition"
+                >Papers</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="hover:text-deep-earth transition text-deep-earth border-b-2 border-deep-earth"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <section
+        id="home"
+        class="fade-in max-w-5xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-12"
+      >
+        <div class="flex-1 order-2 md:order-1 text-center md:text-left">
+          <h1 class="text-5xl md:text-7xl mb-6">
+            Genetics,
+            <span class="italic text-moss-green">improved by code.</span>
+          </h1>
+          <p class="text-lg leading-relaxed mb-8 text-deep-earth/80">
+            Biologist, Biology Teacher (Elementary and High School) and PhD Candidate in Genetics and Breeding. Currently
+            <strong>bridging the gap</strong> between life sciences and software
+            development by exploring tools like
+            <span class="code-font bg-leaf-soft/10 px-1 text-sm">R</span>,
+            <span class="code-font bg-leaf-soft/10 px-1 text-sm">Python</span>,
+            <span class="code-font bg-leaf-soft/10 px-1 text-sm"
+              >Dart/Flutter</span
+            >, and
+            <span class="code-font bg-leaf-soft/10 px-1 text-sm"
+              >React/NextJS</span
+            >
+            to visualize, solve and communicate complex problems in science.
+          </p>
+          <div class="flex justify-center md:justify-start gap-4">
+            <a
+              href="https://linkedin.com/in/SEU_USER"
+              target="_blank"
+              class="flex items-center gap-2 border border-moss-green px-6 py-3 rounded-sm hover:bg-moss-green/10 transition"
+            >
+              <svg
+                class="w-5 h-5 fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/jpgteixeira"
+              target="_blank"
+              class="flex items-center gap-2 border border-moss-green px-6 py-3 rounded-sm hover:bg-moss-green/10 transition"
+            >
+              <svg
+                class="w-5 h-5 fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="flex-1 order-1 md:order-2 flex flex-col items-center gap-6">
+          <div
+            class="relative w-64 h-64 border-2 border-leaf-soft p-2 rotate-3 hover:rotate-0 transition duration-500 bg-white shadow-lg"
+          >
+            <div class="w-full h-full overflow-hidden">
+              <img
+                src="gallery/perfil.jpeg"
+                alt="João Paulo Teixeira"
+                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+          </div>
+
+          <div class="max-w-[280px] text-center">
+            <span
+              class="text-leaf-soft font-mono text-[12px] leading-relaxed italic block border-t border-leaf-soft/20 pt-4"
+            >
+              "Ignorance more frequently begets confidence than does knowledge"
+              <br />
+              <span class="font-bold uppercase tracking-tighter"
+                >— Charles Darwin</span
+              >
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="fade-in max-w-4xl mx-auto px-6 py-16 border-b border-leaf-soft/10"
+      >
+        <h2 class="text-4xl font-bold text-deep-earth mb-4">Profile Resume</h2>
+        <p class="text-deep-earth text-lg leading-relaxed italic">
+          Biologist with an M.Sc. in Animal Biology and currently a PhD
+          Candidate in Genetics and Breeding at UFV. I work at the intersection
+          of biological data analysis and software development, bridging the gap
+          between public administration, school leadership, and advanced
+          scientific research.
+        </p>
+      </section>
+
+      <section id="curriculum" class="fade-in py-20">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl font-bold text-deep-earth mb-12">Lifetime CV</h2>
+          <div id="timeline-container" class="relative">
+            <div
+              class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-leaf-soft/30"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="fade-in py-20 bg-white/30">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl font-bold mb-12 text-deep-earth">
+            Featured Projects
+          </h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div
+              class="border border-leaf-soft/20 p-8 rounded-sm hover:shadow-lg transition-all group bg-white/50"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <span
+                  class="text-xs font-mono text-leaf-soft uppercase tracking-widest"
+                  >Back-end & Stats</span
+                >
+                <span class="text-2xl">📊</span>
+              </div>
+              <h3
+                class="text-2xl font-bold mb-4 group-hover:text-moss-green transition-colors"
+              >
+                EnvKernel Package
+              </h3>
+              <p class="text-sm text-deep-earth/70 mb-6 leading-relaxed">
+                Implementing non-linear kernels for environmental
+                covariate-based relationship matrices in R.
+              </p>
+              <a
+                href="https://github.com/Resende-Lab/EnvKernel"
+                target="_blank"
+                class="text-xs font-bold underline hover:text-moss-green"
+                >Source Code →</a
+              >
+            </div>
+            <div
+              class="border border-leaf-soft/20 p-8 rounded-sm hover:shadow-lg transition-all group bg-white/50"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <span
+                  class="text-xs font-mono text-leaf-soft uppercase tracking-widest"
+                  >Front-end & UX</span
+                >
+                <span class="text-2xl">🌐</span>
+              </div>
+              <h3
+                class="text-2xl font-bold mb-4 group-hover:text-moss-green transition-colors"
+              >
+                QGSL Lab Website
+              </h3>
+              <p class="text-sm text-deep-earth/70 mb-6 leading-relaxed">
+                Quantitative Genetics Statistical Learning Lab portal developed
+                with React and NextJS.
+              </p>
+              <a
+                href="#"
+                class="text-xs font-bold underline hover:text-moss-green"
+                >Visit Lab Site →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="papers"
+        class="fade-in py-20 bg-field-beige/50 border-t border-leaf-soft/10"
+      >
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-4xl font-bold mb-12 text-deep-earth">
+            Published
+            <span class="italic text-moss-green text-3xl">Papers</span>
+          </h2>
+
+          <div class="space-y-8">
+            <div
+              class="group border-l-4 border-moss-green bg-white p-6 shadow-sm hover:shadow-md transition-all"
+            >
+              <span class="text-xs font-mono text-leaf-soft"
+                >2021 | PHYSIOLOGICAL AND BIOCHEMICAL ZOOLOGY</span
+              >
+              <h3
+                class="text-xl font-bold text-deep-earth mt-2 group-hover:text-moss-green transition-colors"
+              >
+                High Seasonal Variation of Plasma Testosterone Levels for a
+                Tropical Grassland Bird Resembles Patterns of Temperate Birds
+              </h3>
+              <p class="text-xs text-deep-earth/60 mt-2 leading-relaxed italic">
+                LOPES, L. E.; <strong>TEIXEIRA, J. P. G.</strong>; MEIRELES, R.
+                C.; BASTOS, D. S. S.; DE OLIVEIRA, L. L.; SOLAR, R.
+              </p>
+              <div class="mt-4 flex items-center gap-4">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-widest text-leaf-soft"
+                  >Citations: 8</span
+                >
+                <a
+                  href="https://doi.org/10.1086/712613"
+                  target="_blank"
+                  class="text-xs font-bold underline hover:text-moss-green"
+                  >Read Paper →</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="group border-l-4 border-leaf-soft bg-white p-6 shadow-sm hover:shadow-md transition-all"
+            >
+              <span class="text-xs font-mono text-leaf-soft"
+                >2018 | PLOS ONE</span
+              >
+              <h3
+                class="text-xl font-bold text-deep-earth mt-2 group-hover:text-moss-green transition-colors"
+              >
+                Soil attributes drive nest-site selection by the campo miner
+                <i>Geositta poeciloptera</i>
+              </h3>
+              <p class="text-xs text-deep-earth/60 mt-2 leading-relaxed italic">
+                MEIRELES, R. C.; <strong>TEIXEIRA, J. P. G.</strong>; SOLAR, R.;
+                VASCONCELOS, B. N. F.; FERNANDES, R. B. A.; LOPES, L. E.
+              </p>
+              <div class="mt-4 flex items-center gap-4">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-widest text-leaf-soft"
+                  >Citations: 10</span
+                >
+                <a
+                  href="https://doi.org/10.1371/journal.pone.0192185"
+                  target="_blank"
+                  class="text-xs font-bold underline hover:text-moss-green"
+                  >Read Paper →</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="group border-l-4 border-leaf-soft bg-white p-6 shadow-sm hover:shadow-md transition-all"
+            >
+              <span class="text-xs font-mono text-leaf-soft"
+                >2018 | PLOS ONE</span
+              >
+              <h3
+                class="text-xl font-bold text-deep-earth mt-2 group-hover:text-moss-green transition-colors"
+              >
+                Reproductive functions in <i>Desmodus rotundus</i>: A comparison
+                between seasons in a morphological context
+              </h3>
+              <p class="text-xs text-deep-earth/60 mt-2 leading-relaxed italic">
+                SOUZA, A. C. F.; SANTOS, F. C.; BASTOS, D. S. S.; SERTORIO, M.
+                N.; <strong>TEIXEIRA, J. P. G.</strong>; FERNANDES, K. M.;
+                MACHADO-NEVES, M.
+              </p>
+              <div class="mt-4 flex items-center gap-4">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-widest text-leaf-soft"
+                  >Citations: 8</span
+                >
+                <a
+                  href="https://doi.org/10.1371/journal.pone.0205023"
+                  target="_blank"
+                  class="text-xs font-bold underline hover:text-moss-green"
+                  >Read Paper →</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="group border-l-4 border-leaf-soft bg-white p-6 shadow-sm hover:shadow-md transition-all"
+            >
+              <span class="text-xs font-mono text-leaf-soft"
+                >2017 | JOURNAL OF NATURAL HISTORY</span
+              >
+              <h3
+                class="text-xl font-bold text-deep-earth mt-2 group-hover:text-moss-green transition-colors"
+              >
+                Breeding biology of the threatened Campo Miner
+                <i>Geositta poeciloptera</i> (Aves: Scleruridae), a Neotropical
+                grassland specialist
+              </h3>
+              <p class="text-xs text-deep-earth/60 mt-2 leading-relaxed italic">
+                MACHADO, T. L. S. S.; LOMBARDI, V. T.; MEIRELES, R. C.;
+                <strong>TEIXEIRA, J. P. G.</strong>; SOLAR, R.; LOPES, L. E.
+              </p>
+              <div class="mt-4 flex items-center gap-4">
+                <span
+                  class="text-[10px] font-bold uppercase tracking-widest text-leaf-soft"
+                  >Citations: 17</span
+                >
+                <a
+                  href="https://doi.org/10.1080/00222933.2017.1384077"
+                  target="_blank"
+                  class="text-xs font-bold underline hover:text-moss-green"
+                  >Read Paper →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        class="fade-in py-20 bg-white border-t border-leaf-soft/10"
+      >
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="text-4xl font-bold mb-4 text-deep-earth">Get in touch</h2>
+          <div
+            class="w-full bg-field-beige/30 rounded-sm overflow-hidden border border-leaf-soft/20 shadow-inner h-[600px]"
+          >
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSd5v3TL5oOVRRAXqBpDd7hVoAxalvFoBP6hjk1TUttThqthdA/viewform?embedded=true"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              class="grayscale hover:grayscale-0 transition-all duration-700"
+              loading="lazy"
+              >Loading...</iframe
+            >
+          </div>
+          <div class="mt-12 flex justify-center gap-8">
+            <a
+              href="https://github.com/jpgteixeira"
+              target="_blank"
+              class="text-xs font-bold uppercase text-moss-green hover:text-deep-earth transition"
+              >GitHub</a
+            >
+            <a
+              href="#"
+              target="_blank"
+              class="text-xs font-bold uppercase text-moss-green hover:text-deep-earth transition"
+              >LinkedIn</a
+            >
+            <a
+              href="mailto:seuemail@exemplo.com"
+              class="text-xs font-bold uppercase text-moss-green hover:text-deep-earth transition"
+              >Email</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="p-8 text-center text-[10px] uppercase tracking-widest text-leaf-soft font-mono"
+    >
+      © 2026 João Paulo Teixeira
+    </footer>
+
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 z-50 bg-moss-green text-field-beige w-12 h-12 rounded-full shadow-lg opacity-0 translate-y-4 pointer-events-none transition-all duration-500 hover:bg-deep-earth flex items-center justify-center group"
+    >
+      <span class="group-hover:-translate-y-1 transition-transform">↑</span>
+    </button>
+
+    <script>
+      // COLE SEU JSON AQUI DENTRO DO timelineData
+      const timelineData = [
+        {
+          ano: "1991",
+          titulo: "I was born here! =)",
+          desc: "Linhares, ES - Brazil",
+          tipo: "grande",
+          icone: "👶",
+          idiomas:
+            " <br> - Portuguese: Native <br> - English: Proficient Reading/Writing, Intermediate Speaking <br> - Spanish: Proficient Reading",
+          formacao:
+            "<br> - M.Sc. in Animal Biology <br> - Biologist (CRBio 104632/02-D) <br> - B.A. in Pedagogy",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772575404061!6m8!1m7!1slm2u9vEFGlqjyN-Sqj9FQw!2m2!1d-19.39791290096491!2d-40.07039656464742!3f208.41529832002132!4f-1.9343964438120622!5f0.7820865974627469",
+        },
+        {
+          ano: "2009",
+          titulo: "The journey begins!",
+          desc: "Started my B.Sc. in Biological Sciences at the Federal University of Viçosa (UFV) — an amazing place!",
+          tipo: "grande",
+          icone: "🎓",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772575568191!6m8!1m7!1sjYT9Sh4clTkN3_Wbypxujg!2m2!1d-20.75745986723151!2d-42.87534836331135!3f82.8460929158503!4f-7.254805800082764!5f0.7820865974627469",
+        },
+        {
+          ano: "2009",
+          titulo: "Outreach Volunteer",
+          desc: "Environmental Education project for 5th-grade elementary students.",
+          tipo: "pequeno",
+          icone: "🌿",
+        },
+        {
+          ano: "2010",
+          titulo: "Teaching Fellowship (PIBID)",
+          desc: "Lesson planning and tutoring for high school seniors. I was honored to be chosen as the 'Honored Mentor' by the graduating class!",
+          tipo: "grande",
+          icone: "🏫",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772575640988!6m8!1m7!1sKop7tobhAN3r4y5ioWItWQ!2m2!1d-20.74972699467995!2d-42.87662842611948!3f195.08291636698527!4f4.862221329765816!5f0.4000000000000002",
+        },
+        {
+          ano: "2011",
+          titulo: "Arthur Bernardes Award",
+          desc: "Awarded the Arthur Bernardes Merit Award for the project: 'Outreach Activities of the João Moojen Zoology Museum'.",
+          tipo: "grande",
+          icone: "🏆",
+          mapa: "gallery/arthur_bernardes.jpg",
+          posicao: "top",
+        },
+        {
+          ano: "2011 — 2012",
+          titulo: "International Experience",
+          desc: "Exchange Student at the Polytechnic Institute of Bragança (IPB), Portugal.",
+          tipo: "grande",
+          icone: "✈️",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772576460333!6m8!1m7!1siRxmrJK7HcE2D4YcJxTNeA!2m2!1d41.79942609351036!2d-6.769298030662298!3f202.8386572410458!4f-4.941306190570742!5f0.7820865974627469",
+        },
+        {
+          ano: "2012",
+          titulo: "First gig in Biology!",
+          desc: "Field Assistant (Ichthyofauna) for the Morro do Pilar/MG - Linhares/ES ore pipeline survey.",
+          tipo: "grande",
+          icone: "🐟",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772577143080!6m8!1m7!1sXwSZUpYgOyVXaXNI4vzLxg!2m2!1d-19.21815000029!2d-43.37867497273993!3f355.16145344527826!4f-10.490628132363966!5f0.7820865974627469",
+        },
+        {
+          ano: "2012 — 2014",
+          titulo: "Field Campaigns",
+          desc: "Several field campaigns as an assistant (Ichthyofauna & Ornithology) across PCH Piedade, Amazon Rainforest, and Highway MG-010.",
+          tipo: "pequeno",
+          icone: "🐾",
+        },
+        {
+          ano: "2014",
+          titulo: "PIBEX Extension Fellowship",
+          desc: "Project 'Integrating 4 walls and 4 pillars': Environmental education at the UFV Biology Reserve.",
+          tipo: "grande",
+          icone: "🌿",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772577222286!6m8!1m7!1sK5uFbfkneKHATjGUEVuXoA!2m2!1d-20.75797895602387!2d-42.86182074030879!3f58.42065878054513!4f-0.698861109450462!5f0.4000000000000002",
+          posicao: "center",
+        },
+        {
+          ano: "2014",
+          titulo: "B.Sc. Concluded; starting M.Sc.",
+          desc: "Finished my Biology degree and immediately jumped into a Master's program in Animal Biology.",
+          tipo: "grande",
+          icone: "🎓",
+          mapa: "gallery/formatura2.jpg",
+          posicao: "center",
+        },
+        {
+          ano: "2015",
+          titulo: "Master's Fieldwork",
+          desc: "Extensive field campaigns for my research on Savanna birds.",
+          tipo: "grande",
+          icone: "🐦",
+          mapa: "gallery/masterfieldwork.jpg",
+          posicao: "top",
+        },
+
+        {
+          ano: "2016",
+          titulo: "Master's Concluded!",
+          desc: "Thesis: From macro to micro — the role of fire and testosterone in the ecology of the threatened Campo Miner (<i>Geositta poeciloptera</i>).",
+          tipo: "grande",
+          icone: "🐦",
+          mapa: "gallery/thesis.png",
+          posicao: "top",
+        },
+        {
+          ano: "2017",
+          titulo: "Rapadura is sweet, but not soft*",
+          desc: "With no job openings, I co-founded a confectionery business. A tough venture that taught me a lot! <br> <i>*Brazilian saying: life is hard, but rewarding.</i>",
+          tipo: "grande",
+          icone: "🍬",
+          mapa: "gallery/santaconstancia.png",
+          posicao: "top",
+        },
+        {
+          ano: "2017 — 2021",
+          titulo: "Research Publications",
+          desc: "Published several articles in journals like <i>PLoS One</i> and <i>Journal of Natural History</i> about bird biology and morphology.",
+          tipo: "grande",
+          icone: "📝",
+          mapa: "gallery/mscconclusion.png",
+          posicao: "center",
+        },
+        {
+          ano: "2018",
+          titulo: "Tenured Biology Professor",
+          desc: "Passed a public exam to become a permanent teacher for Middle and High School.",
+          tipo: "grande",
+          icone: "🧑‍🏫",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772579933202!6m8!1m7!1s9yExvWRr--cGv6Ac7QhPSA!2m2!1d-18.37202072563647!2d-40.83467692963193!3f178.56242810125124!4f-4.279663982976842!5f0.7820865974627469",
+          posicao: "top",
+        },
+        {
+          ano: "2020",
+          titulo: "Back to my roots",
+          desc: "Managed to transfer my work back to my hometown, Linhares.",
+          tipo: "grande",
+          icone: "🏠",
+          mapa: "https://www.google.com/maps/embed?pb=!4v1772580078394!6m8!1m7!1sIoqvL-GkI-HoRgf-W980Jw!2m2!1d-19.35999321902538!2d-40.05216017787856!3f233.35444373194082!4f-2.9012958424629005!5f0.7820865974627469",
+        },
+        {
+          ano: "2021",
+          titulo: "School Principal",
+          subtitulo: "CEEFMTI Gov. Gerson Camata",
+          desc: "I was so happy to be back in my hometown, but when the opportunity arose to lead a full-time High School, I couldn't say no. Duty called, and I embraced the challenge of school leadership.",
+          tipo: "grande",
+          icone: "🏫",
+          mapa: "gallery/gerson2.png",
+          posicao: "center",
+        },
+        {
+          ano: "2022",
+          titulo: "First Code!",
+          subtitulo: "Automating the boring stuff",
+          desc: "I noticed my coordinator spending entire mornings manually cross-checking paper attendance logs. To fix this, I taught myself to code and developed a system using Google Apps Script to automate the process. Later on, I started studying Python to expand my skills. It was a humble first step, but you can <a href='https://github.com/jpgteixeira/frequency-monitoring/tree/main' target='_blank' class='underline text-leaf-soft font-bold'>check my first repo here!</a>",
+          tipo: "grande",
+          icone: "🚀",
+          mapa: "gallery/frequence_code.png",
+          posicao: "center",
+        },
+        {
+          ano: "2023 — 2026 (Expected)",
+          titulo: "João Paulo <- João Paulo + B.S. Internet Systems",
+          subtitulo: "Going for the third degree!",
+          desc: "Fell in love with coding and enrolled in a new degree to become a proper developer.",
+          tipo: "grande",
+          icone: "💻",
+          mapa: "gallery/tsis-ifes-pr.jpg",
+          posicao: "center",
+        },
+        {
+          ano: "2023",
+          titulo: "Administrative Advisor",
+          subtitulo: "Regional Superintendency of Education (SRE Linhares)",
+          desc: "Coordinated administrative oversight for 25 state schools across 6 municipalities.",
+          tipo: "grande",
+          icone: "💼",
+          mapa: "gallery/quarteto.jpg",
+          posicao: "center",
+        },
+        {
+          ano: "2024",
+          titulo: "Machine Learning Research",
+          subtitulo: "Volunteer Researcher",
+          desc: "Developing ML models to predict grammatical errors and topic adherence in essays.",
+          tipo: "pequeno",
+          icone: "🤖",
+        },
+        {
+          ano: "2025 — Present",
+          titulo: "PhD in Genetics and Breeding",
+          subtitulo: "UFV - Viçosa, MG",
+          desc: "Back to the lab! Pursuing a doctorate in a field I've always been passionate about, bridging Bio and Tech.",
+          tipo: "grande",
+          icone: "🧬",
+          mapa: "gallery/qgsl_lab.jpg",
+          posicao: "center",
+        },
+      ];
+
+      const container = document.getElementById("timeline-container");
+      timelineData.forEach((item, index) => {
+        const isEven = index % 2 === 0;
+        const entry = document.createElement("div");
+        entry.className = `relative mb-24 flex items-center justify-between w-full group ${isEven ? "flex-row-reverse" : ""}`;
+
+        // Verifica se é o item de nascimento para mostrar línguas/formação
+        const baseInfo =
+          item.ano === "1991"
+            ? `
+          <div class="mt-4 pt-4 border-t border-leaf-soft/20 text-[11px]">
+            <p><strong>Languages:</strong> ${item.idiomas}</p>
+            <p class="mt-1"><strong>Degrees:</strong> ${item.formacao}</p>
+          </div>`
+            : "";
+
+        // Lógica de Mídia (Foto ou Mapa)
+        let midiaHtml = "";
+        if (item.mapa) {
+          const isImage = item.mapa.match(/\.(jpeg|jpg|gif|png|webp)$/i);
+          midiaHtml = isImage
+            ? `<img src="${item.mapa}" class="w-full h-full object-cover object-${item.posicao}">`
+            : `<iframe src="${item.mapa}" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>`;
+        } else {
+          midiaHtml = `<div class="flex items-center justify-center h-full text-leaf-soft/30 italic text-[10px] p-4 text-center underline">Colatina, ES</div>`;
+        }
+
+        if (item.tipo === "grande") {
+          entry.innerHTML = `
+            <div class="w-5/12 ${isEven ? "text-left" : "text-right"} transition-all duration-500 group-hover:scale-105">
+              <span class="code-font text-xs font-bold text-leaf-soft">${item.ano}</span>
+              <h3 class="text-xl font-bold text-deep-earth leading-tight">${item.titulo}</h3>
+              <p class="text-xs text-moss-green font-mono mb-2">${item.subtitulo || ""}</p>
+              <p class="text-sm text-deep-earth/70 leading-relaxed">${item.desc}</p>
+              ${baseInfo}
+            </div>
+            <div class="z-20 flex items-center justify-center w-12 h-12 bg-field-beige border-2 border-moss-green rounded-full shadow-md group-hover:bg-moss-green group-hover:text-white transition-all">
+              <span class="text-xl">${item.icone}</span>
+            </div>
+            <div class="w-5/12 h-40 bg-white shadow-xl rounded-lg overflow-hidden border border-leaf-soft/20 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-500 ease-out">
+              ${midiaHtml}
+            </div>`;
+        } else {
+          entry.innerHTML = `
+            <div class="w-5/12"></div>
+            <div class="z-20 relative">
+              <div class="w-4 h-4 bg-leaf-soft rounded-full border-2 border-field-beige hover:scale-150 hover:bg-deep-earth transition-all"></div>
+              <div class="absolute left-8 top-1/2 -translate-y-1/2 w-48 opacity-0 group-hover:opacity-100 bg-white p-3 rounded shadow-xl border border-leaf-soft/10 transition-opacity pointer-events-none">
+                <span class="text-[12px] font-bold text-leaf-soft">${item.ano}</span>
+                <h4 class="text-xs font-bold text-deep-earth">${item.titulo}</h4>
+                <p class="text-[12px] text-deep-earth/70 mt-1">${item.desc}</p>
+              </div>
+            </div>
+            <div class="w-5/12"></div>`;
+        }
+        container.appendChild(entry);
+      });
+
+      // Lógica Global de Scroll e Fade In
+      const backBtn = document.getElementById("back-to-top");
+      const faders = document.querySelectorAll(".fade-in");
+
+      const handleScroll = () => {
+        // Botão Back to top
+        if (window.scrollY > 400) {
+          backBtn.classList.remove(
+            "opacity-0",
+            "translate-y-4",
+            "pointer-events-none",
+          );
+          backBtn.classList.add(
+            "opacity-100",
+            "translate-y-0",
+            "pointer-events-auto",
+          );
+        } else {
+          backBtn.classList.add(
+            "opacity-0",
+            "translate-y-4",
+            "pointer-events-none",
+          );
+          backBtn.classList.remove(
+            "opacity-100",
+            "translate-y-0",
+            "pointer-events-auto",
+          );
+        }
+
+        // Fade in
+        faders.forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight - 50)
+            el.classList.add("appear");
+        });
+      };
+
+      backBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("load", handleScroll);
+    </script>
+  </body>
+</html>
